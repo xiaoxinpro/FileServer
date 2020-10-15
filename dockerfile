@@ -11,7 +11,7 @@ RUN apk update && \
     mkdir -p /web/www && \
     cd /web && \
     wget https://github.com/xiaoxinpro/FileServer/raw/main/build/FileServer_linux_amd64 -O ./FileServer && \
-    chmod 777 /web/FileServer && \
+    chmod 777 /web/FileServer
 
 VOLUME /web/www
 
