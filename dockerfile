@@ -8,7 +8,7 @@ RUN apk update && \
     apk add ca-certificates && \
     update-ca-certificates && \
     apk --no-cache add openssl wget && \
-    mkdir /web && mkdir /web/www \
+    mkdir /web/www \
     cd /web && \
     wget https://github.com/xiaoxinpro/FileServer/raw/main/build/FileServer_linux_amd64 -O ./FileServer && \
     chmod 777 /web/FileServer && \
