@@ -24,8 +24,8 @@ func main() {
 	flag.Parse()
 
 	if ConfigSource == "env" {
-		WebPort = getEnvInt("PORT", WebPort)
-		WebPath = getEnvString("PATH", WebPath)
+		WebPort = getEnvInt("WEB_PORT", WebPort)
+		WebPath = getEnvString("WEB_PATH", WebPath)
 	}
 
 	fmt.Printf("File Server Port:%d Path:%s", WebPort, WebPath)

@@ -3,8 +3,8 @@ MAINTAINER chishin <pro@xxgzs.org>
 
 WORKDIR /
 ENV VERSION 0.0.1
-ENV PORT 8080
-ENV PATH /web/www
+ENV WEB_PORT 8080
+ENV WEB_PATH /web/www
 
 RUN apk update && \
     apk add ca-certificates && \
@@ -13,10 +13,11 @@ RUN apk update && \
     mkdir -p -m 777 /web/www && \
     cd /web && \
     wget https://github.com/xiaoxinpro/FileServer/raw/main/build/FileServer_linux_amd64 -O ./FileServer && \
-    chmod 777 /web/FileServer
+    chmod 777 /web/FileServer && \
+    rm -rf /var/cache/apk/*
 
-VOLUME $PATH
+VOLUME $WEB_PATH
 
-EXPOSE $PORT
+EXPOSE $WEB_PORT
 
 CMD /web/FileServer -c env
