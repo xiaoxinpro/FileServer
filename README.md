@@ -64,7 +64,7 @@ FileServer默认采用命令行模式配置，命令行接收的参数如下：
 
 ## License
 
-Copyright © 2020 xiaoxinpro/FileServer Released under the GNU V3 License.
+Copyright © 2020 xiaoxinpro/FileServer Released under the GPL-3.0 License.
 
 > 注：FileServer 开源的目的是大家能够在本站的基础之上有所启发，做出更多新的东西。 如果你使用这个开源项目，请注明本项目开源地址。
 
