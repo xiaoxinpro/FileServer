@@ -6,14 +6,10 @@ ENV VERSION 0.0.1
 ENV WEB_PORT 8080
 ENV WEB_PATH /web/www
 
-RUN apk update && \
-    apk add ca-certificates && \
-    update-ca-certificates && \
-    apk --no-cache add openssl wget && \
-    mkdir -p -m 777 /web/www && \
-    cd /web && \
-    wget https://github.com/xiaoxinpro/FileServer/raw/main/build/FileServer_linux_amd64 -O ./FileServer && \
-    chmod 777 /web/FileServer && \
+ADD build/FileServer_linux_amd64 /web/FileServer
+
+RUN mkdir -p -m 755 /web/www && \
+    chmod 755 /web/FileServer && \
     rm -rf /var/cache/apk/*
 
 VOLUME $WEB_PATH
