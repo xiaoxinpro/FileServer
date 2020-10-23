@@ -2,7 +2,7 @@ FROM alpine:3.8
 MAINTAINER chishin <pro@xxgzs.org>
 
 WORKDIR /
-ENV VERSION 0.0.1
+ENV VERSION 0.1.0
 ENV WEB_PORT 8080
 ENV WEB_PATH /web/www
 
