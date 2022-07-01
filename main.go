@@ -10,28 +10,31 @@ import (
 
 var (
 	ConfigSource string
-	WebPort int
-	WebPath string
+	WebPort      int
+	WebPath      string
 )
 
 func init() {
-	flag.StringVar(&ConfigSource,"c", "default", "config source default or env.")
-	flag.IntVar(&WebPort,"port", 8080, "web port.")
-	flag.StringVar(&WebPath,"path", "./www", "web path.")
-}
-
-func main() {
+	flag.StringVar(&ConfigSource, "c", "default", "config source default or env.")
+	flag.IntVar(&WebPort, "port", 8080, "web port.")
+	flag.StringVar(&WebPath, "path", "./www", "web path.")
 	flag.Parse()
 
 	if ConfigSource == "env" {
 		WebPort = getEnvInt("WEB_PORT", WebPort)
 		WebPath = getEnvString("WEB_PATH", WebPath)
 	}
+}
+
+func main() {
 
 	fmt.Printf("File Server Port:%d Path:%s", WebPort, WebPath)
 
 	http.Handle("/", http.FileServer(http.Dir(WebPath)))
-	http.ListenAndServe(fmt.Sprintf(":%d", WebPort), nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%d", WebPort), nil)
+	if err != nil {
+		fmt.Printf(err.Error())
+	}
 }
 
 func getEnvString(name string, value string) string {
